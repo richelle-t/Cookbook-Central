@@ -1,0 +1,136 @@
+body {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #cbe8eb;
+}
+
+a:visited{
+    color:white;
+}
+
+.navbar {
+    background-color: #00238e;
+    overflow: hidden;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    position: fixed;
+}
+
+.navbar a {
+    text-decoration: none;
+}
+
+.horizontal{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+
+.navElement{
+    float: right;
+    padding: 20px;
+    display: inline;
+    color: white;
+}
+
+
+.navTitle{
+    float: left;
+    padding: 16px;
+    font-size: x-large;
+    font-weight: bold;
+    color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.home-table td{
+    border: 1px solid #484554;
+    padding: 2.5px;
+    background-color: #fffade;
+}
+
+table{
+    width: 75%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+tr{
+    width: 70%;
+}
+
+th{
+    padding:10px;
+    color: #00238e;
+}
+
+td{
+    border: 1px solid #484554;
+    padding: 2.5px;
+    color: #00238e;
+    background-color: #fffade;
+}
+
+table:not(.home-table, .edit-table, .insert-table) th:nth-last-child(1),
+table:not(.home-table, .edit-table, .insert-table) th:nth-last-child(2) {
+    width: 10px; 
+}
+
+table:not(.home-table, .edit-table, .insert-table) td:nth-last-child(1),
+table:not(.home-table, .edit-table, .insert-table) td:nth-last-child(2) {
+    border: none;
+    background-color: transparent;
+}
+
+.edit {
+    background-color: #c78a36;
+    color: white;
+    border-radius: 5px;
+}
+
+.delete {
+    background-color: #7e0000;
+    color: white;
+    border-radius: 5px;
+}
+
+.add {
+    text-decoration: none;
+    padding: 3px;
+    border: 2px solid black;
+    background-color: #007e60;
+    color:white;
+    border-radius: 5px;
+}
+
+.review th{
+    width: 30%;
+}
+
+.checked {
+    color: rgb(194, 177, 82);
+}
+
+.intro {
+    color: #00238e;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 50px;
+    max-width: 75%;
+}
+

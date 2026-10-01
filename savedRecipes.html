@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <title>Saved Recipes</title>
+</head>
+<body>
+    <nav class="navbar">
+        <ui class="horizontal">
+            <li class="navTitle"><a href='/'>Cookbook Central</a></li>
+            <li class="navElement"><a href='/recipes'>Recipes</a></li>
+            <li class="navElement"><a href='/recipeIngredients'>Recipe Ingredients</a></li>
+            <li class="navElement"><a href='/ingredients'>Ingredients</a></li>
+            <li class="navElement"><a href='/savedRecipes'>Saved Recipes</a></li>
+            <li class="navElement"><a href='/reviews'>Reviews</a></li>
+            <li class="navElement"><a href='/users'>Users</a></li>
+            <li class="navElement"><a href='/userFollowers'>User Followers</a></li>
+        </ui>
+    </nav>
+    <h1>Saved Recipes</h1>
+    <div class="container">
+        <table>
+            <tr>
+                <th>Saved Recipe ID</th>
+                <th>User Name</th>
+                <th>Recipe Name</th>
+                <th><a class = 'add' href=/insert/SavedRecipes>Add</a></th>
+                <th></th>
+            </tr>
+            {% for savedRecipe in savedRecipes %}
+            <form method="POST" action="/edit/SavedRecipes">
+            <tr>
+                <td>{{savedRecipe['savedRecipeID']}}</td>
+                <td>{{savedRecipe['userName']}}</td>
+                <td>{{savedRecipe['recipeName']}}</td>
+                <td><button class='edit' name='editRow' type="submit" value="{{savedRecipe['savedRecipeID']}}">Edit</button></td></form>
+                <td><form action='/savedRecipes' method='POST'><button class='delete' type='onSubmit' name='delete' value="{{savedRecipe['savedRecipeID']}}">Delete</button></form></td>
+            </tr>
+            {% endfor%}
+        </table>
+    </div>
+</body>
+</html>

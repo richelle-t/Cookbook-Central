@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <title>Edit</title>
+</head>
+<body>
+    <nav class="navbar">
+        <ui class="horizontal">
+            <li class="navTitle"><a href='/'>Cookbook Central</a></li>
+            <li class="navElement"><a href='/recipes'>Recipes</a></li>
+            <li class="navElement"><a href='/recipeIngredients'>Recipe Ingredients</a></li>
+            <li class="navElement"><a href='/ingredients'>Ingredients</a></li>
+            <li class="navElement"><a href='/savedRecipes'>Saved Recipes</a></li>
+            <li class="navElement"><a href='/reviews'>Reviews</a></li>
+            <li class="navElement"><a href='/users'>Users</a></li>
+            <li class="navElement"><a href='/userFollowers'>User Followers</a></li>
+        </ui>
+    </nav>
+    <h1>Editing Row in {{data['table']}}</h1>
+
+    <form action="/{{data['table'][0].lower()}}{{data['table'][1:]}}" method="POST"> 
+    <input name='update' hidden/>
+    <input name='primary_key_value' hidden value="{{data['primary_key_value']}}"/>
+    <table class='edit-table'>
+        <tr>
+            {% for index in range(data['needFields']) %}
+            
+            <th>{{data[['Field', index]|join('')]}}</th>
+
+            {% endfor %}
+
+
+        </tr>
+        <tr>
+
+            {% for index in range(data['needFields']) %}
+                {% if ['dropdown', index]|join('') in data %}
+                    <td><select name="{{data[['Field', index]|join('')]}}" id="{{data[['Field', index]|join('')]}}">
+                        <option selected>{{data[['dropdown', index, 'selected']|join('')]}}</option>
+                        {% if data['table'] == 'Reviews' and data[['Field', index]|join('')] == 'User Name' %}
+                        <option>None</option>
+                        {% endif %}
+                    {% for name in data[['dropdown', index]|join('')]%}
+                        <option>{{name}}</option>
+                    {% endfor %}
+
+                    </select></td>
+                {% elif data[['Field', index]|join('')] == "Date" %}
+                    <td><input type="date" name="{{data[['Field', index]|join('')]}}" value="{{data[['Value', index]|join('')]}}"/></td>
+                {% elif data[['Field', index]|join('')] == 'Email' %}
+                    <td><input type='email' name = "{{data[['Field', index]|join('')]}}"/></td>
+                {% else %}
+                    <td><input name="{{data[['Field', index]|join('')]}}" value="{{data[['Value', index]|join('')]}}"/></td>
+                {% endif %}
+            {% endfor %}
+            <td><button class='edit' type="onSubmit">Update</button></td>
+        </tr>
+
+    </table>
+    </form>
+</body>
+</html>

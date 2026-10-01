@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <title>Home</title>
+</head>
+<body>
+    <nav class="navbar">
+        <ui class="horizontal">
+            <li class="navTitle"><a href='/'>Cookbook Central</a></li>
+            <li class="navElement"><a href='/recipes'>Recipes</a></li>
+            <li class="navElement"><a href='/recipeIngredients'>Recipe Ingredients</a></li>
+            <li class="navElement"><a href='/ingredients'>Ingredients</a></li>
+            <li class="navElement"><a href='/savedRecipes'>Saved Recipes</a></li>
+            <li class="navElement"><a href='/reviews'>Reviews</a></li>
+            <li class="navElement"><a href='/users'>Users</a></li>
+            <li class="navElement"><a href='/userFollowers'>User Followers</a></li>
+        </ui>
+    </nav>
+    <h1>Home</h1>
+    <p class="intro">
+        Cookbook Central is a social media website where users can share recipes and follow each other. A database driven website will
+        record information about recipes, ingredients, reviews, and users. The goal of Cookbook Central is to provide users with a free,
+        easy-to-access place to store all their favorite recipes, as well as allow users to discover new recipes. 
+        Users will be able to post their own recipes, view others' recipes, and leave reviews on any recipes with a rating and comment.
+        They’ll also be able to save their own recipes or other users’ recipes to their cookbook, allowing the user to have access to dozens of their favorite recipes. 
+    </p>
+    <div class="container">
+        <table class="home-table">
+            <tr>
+                <th>Table Name</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Recipes</td>
+                <td>An entity table that contains data about recipes.</td>
+            </tr>
+            <tr>
+                <td>Recipe Ingredients</td>
+                <td>An intersection table that supports the M:N relationship between Recipes and Ingredients. <br>
+                    This table contains data about which ingredients are used in which recipes.
+                </td>
+            </tr>
+            <tr>
+                <td>Ingredients</td>
+                <td>An entity table that contains data about ingredients.</td>
+            </tr>
+            <tr>
+                <td>Saved Recipes</td>
+                <td>An intersection table that supports the M:N relationship between Users and Recipes. <br> 
+                    This table contains data about which recipes are saved by which users. 
+                </td>
+            </tr>
+            <tr>
+                <td>Reviews</td>
+                <td>An entity table that contains data about reviews posted by users on recipes.</td>
+            </tr>
+            <tr>
+                <td>Users</td>
+                <td>An entity table that contains data about users.</td>
+            </tr>
+            <tr>
+                <td>User Followers</td>
+                <td>An intersection table that supports the M:N relationship between Users and Users. <br>
+                    This table contains data about the follower-followed relationship between users. 
+                </td>
+            </tr>
+        </table>
+    </div> 
+</body>
+</html>

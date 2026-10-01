@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <title>Insert</title>
+</head>
+<body>
+    <nav class="navbar">
+        <ui class="horizontal">
+            <li class="navTitle"><a href='/'>Cookbook Central</a></li>
+            <li class="navElement"><a href='/recipes'>Recipes</a></li>
+            <li class="navElement"><a href='/recipeIngredients'>Recipe Ingredients</a></li>
+            <li class="navElement"><a href='/ingredients'>Ingredients</a></li>
+            <li class="navElement"><a href='/savedRecipes'>Saved Recipes</a></li>
+            <li class="navElement"><a href='/reviews'>Reviews</a></li>
+            <li class="navElement"><a href='/users'>Users</a></li>
+            <li class="navElement"><a href='/userFollowers'>User Followers</a></li>
+        </ui>
+    </nav>
+    <h1>Inserting into {{data['table']}}</h1>
+
+    <form action="/{{data['table'][0].lower()}}{{data['table'][1:]}}" method="POST"> 
+    <table class='insert-table'>
+        <tr>
+            {% for index in range(0, data['needFields']) %}
+            
+            <th>{{data[['Field', index]|join('')]}}</th>
+
+
+            {% endfor %}
+
+
+        </tr>
+        <tr>
+        {% for index in range(0, data['needFields']) %}
+            <td>
+            {% set dropName = ['dropdown', index]|join('') %}
+            {% if dropName in data %}
+                <select name="{{dropName}}" id="{{dropName}}">
+                {% if data['table'] == 'Reviews' and data[['Field', index]|join('')] == 'User Name' %}
+                <option>None</option>
+                {% endif %}
+                {% for id in data[dropName] %}
+                <option>{{id}}</option>
+                {% endfor %}
+                </select>
+            {% elif data[['Field', index]|join('')] == 'Date' %}
+                <input type='date' name = "{{data[['Field', index]|join('')]}}"/>
+            {% elif data[['Field', index]|join('')] == 'Email' %}
+                <input type='email' name = "{{data[['Field', index]|join('')]}}"/>
+            {% else %}
+                <input name="{{data[['Field', index]|join('')]}}"/>
+            {% endif %}
+            </td>
+        {% endfor %}
+        <input hidden name = "insert"/>
+        <td><button class='add' type="onSubmit">Insert</button></td>
+        </tr>
+
+    </table>
+    </form>
+
+
+
+
+</body>
+
+</html>
